@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: raw
+    database: db
+    schema: raw
+    tables:
+      - name: weather_observations
+        description: "Raw hourly and current weather observations ingested from Open-Meteo API for 6 Algerian cities"
+        columns:
+          - name: id
+          - name: city_name
+          - name: latitude
+          - name: longitude
+          - name: temperature
+          - name: apparent_temperature
+          - name: relative_humidity
+          - name: surface_pressure
+          - name: wind_speed
+          - name: uv_index
+          - name: precipitation
+          - name: weather_code
+          - name: observation_time
+          - name: utc_offset_seconds
+          - name: inserted_at

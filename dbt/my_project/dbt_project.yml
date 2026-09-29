@@ -1,0 +1,28 @@
+name: 'algeria_weather_analytics'
+version: '1.0.0'
+
+profile: 'algeria_weather'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  algeria_weather_analytics:
+    +schema: staging
+
+models:
+  algeria_weather_analytics:
+    staging:
+      +schema: staging
+    mart:
+      +schema: marts
+    marts:
+      +schema: marts
