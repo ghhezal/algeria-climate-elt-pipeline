@@ -1,0 +1,7 @@
+city_id,name,wilaya,climate_zone,latitude,longitude,elevation_m
+DZ-07,Biskra,Biskra,Saharan,34.8504,5.7281,87
+DZ-16,Algiers,Algiers,Mediterranean Coastal,36.7538,3.0588,10
+DZ-31,Oran,Oran,Western Coastal,35.6987,-0.6349,60
+DZ-25,Constantine,Constantine,High Plateaus,36.3650,6.6147,694
+DZ-11,Tamanrasset,Tamanrasset,Deep Sahara/Mountain,22.7850,5.5228,1370
+DZ-23,Annaba,Annaba,Eastern Coastal,36.9000,7.7667,3
