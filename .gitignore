@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+
+postgres/data/
+dbt/logs/
+dbt/target/
+
+.env
+.env.local
