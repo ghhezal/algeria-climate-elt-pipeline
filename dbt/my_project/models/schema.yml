@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: stg_weather_observations
+    description: "Cleaned and deduplicated weather observations from raw source."
+    columns:
+      - name: raw_id
+        tests:
+          - not_null
+      - name: city_name
+        tests:
+          - not_null
+      - name: temperature
+        tests:
+          - not_null
+      - name: observation_time_local
+        tests:
+          - not_null
+
+  - name: fact_weather_observations
+    description: "Fact table containing enriched weather observations, hourly temperature deltas, and Heat Stress Index."
+    columns:
+      - name: observation_id
+        tests:
+          - unique
+          - not_null
+      - name: city_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_cities')
+              field: city_id
+      - name: weather_code
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_weather_codes')
+              field: weather_code
+      - name: climate_zone
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - 'Saharan'
+                - 'Mediterranean Coastal'
+                - 'Western Coastal'
+                - 'High Plateaus'
+                - 'Deep Sahara/Mountain'
+                - 'Eastern Coastal'
+      - name: heat_stress_category
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - 'Extreme Danger'
+                - 'Danger'
+                - 'Extreme Caution'
+                - 'Caution'
+                - 'Comfortable'
+                - 'Cold Stress'
+      - name: temperature
+        tests:
+          - not_null
+      - name: relative_humidity
+        tests:
+          - not_null
+
+  - name: mart_climate_zone_summary
+    description: "Daily aggregated weather and climate metrics grouped by climate zone, wilaya, and city."
+    columns:
+      - name: climate_zone
+        tests:
+          - not_null
+      - name: city_name
+        tests:
+          - not_null
+      - name: observation_date
+        tests:
+          - not_null
